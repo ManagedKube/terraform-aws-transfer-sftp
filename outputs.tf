@@ -3,6 +3,11 @@ output "id" {
   value       = module.this.enabled ? module.this.id : null
 }
 
+output "vpc_endpoint_id" {
+  description = "The id of the vpc endpoint"
+  value       = module.this.enabled && var.vpc_id != null ? aws_transfer_server.default.*.id.endpoint_details[0].vpc_endpoint_id : null
+}
+
 output "transfer_endpoint" {
   description = "The endpoint of the Transfer Server"
   value       = module.this.enabled ? join("", aws_transfer_server.default.*.endpoint) : null
