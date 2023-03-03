@@ -5,7 +5,7 @@ output "id" {
 
 output "transfer_id" {
   description = "The id of the Transfer Server"
-  value       = module.this.enabled ? aws_transfer_server.default.id : null
+  value       = module.this.enabled ? aws_transfer_server.default.*.id : null
 }
 
 output "transfer_endpoint" {
